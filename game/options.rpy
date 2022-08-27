@@ -7,6 +7,10 @@
 
 ## Basics ######################################################################
 
+## Layers
+
+define config.layers = [ 'master', 'transient', 'screens', 'highlight', 'overlay' ]
+
 ## Development
 
 define config.developer = True

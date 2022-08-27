@@ -272,19 +272,19 @@ translate italian strings:
 
     # renpy/common/00action_file.rpy:250
     old "%b %d, %H:%M"
-    new ""
+    new "%b %d, %H:%M"
 
     # renpy/common/00action_file.rpy:364
     old "Save slot %s: [text]"
-    new ""
+    new "Salva lo slot %s: [text]"
 
     # renpy/common/00action_file.rpy:445
     old "Load slot %s: [text]"
-    new ""
+    new "Carica lo slot %s: [text]"
 
     # renpy/common/00action_file.rpy:498
     old "Delete slot [text]"
-    new ""
+    new "Cancella lo slot [text]"
 
     # renpy/common/00action_file.rpy:577
     old "File page auto"
@@ -332,15 +332,15 @@ translate italian strings:
 
     # renpy/common/00director.rpy:1481
     old "⬆"
-    new ""
+    new "⬆"
 
     # renpy/common/00director.rpy:1487
     old "⬇"
-    new ""
+    new "⬇"
 
     # renpy/common/00director.rpy:1551
     old "Done"
-    new ""
+    new "Fatto"
 
     # renpy/common/00director.rpy:1561
     old "(statement)"
@@ -420,23 +420,23 @@ translate italian strings:
 
     # renpy/common/00gui.rpy:435
     old "Are you sure?"
-    new ""
+    new "Sei sicuro?"
 
     # renpy/common/00gui.rpy:436
     old "Are you sure you want to delete this save?"
-    new ""
+    new "Sei sicuro di voler cancellare questa partita?"
 
     # renpy/common/00gui.rpy:437
     old "Are you sure you want to overwrite your save?"
-    new ""
+    new "Sei sicuro di voler sovrascrivere il salvataggio?"
 
     # renpy/common/00gui.rpy:438
     old "Loading will lose unsaved progress.\nAre you sure you want to do this?"
-    new ""
+    new "Caricare la partita farà perdere i progressi non salvati.\nSei sicuro di volerlo fare?"
 
     # renpy/common/00gui.rpy:439
     old "Are you sure you want to quit?"
-    new ""
+    new "Sei sicuro di voler chiudere il gioco?"
 
     # renpy/common/00gui.rpy:440
     old "Are you sure you want to return to the main menu?\nThis will lose unsaved progress."
