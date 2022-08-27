@@ -1,33 +1,49 @@
+import imp
+from typing import Callable
 import renpy.exports as renpy
+from .piece import Piece
 
 class Room():
 
-    __slots__ = ["name", "description", "pieces", "nPieces"]
+    __slots__ = ["pieces"]
 
-    def __init__(self, name, description, nPieces):
-        self.name = name
-        self.description = description
-        self.nPieces = nPieces
-        self.pieces = {i: False for i in range(nPieces) }
+    def __init__(self, *pieces): # type: (int, tuple[Piece]) -> None
+        self.pieces = list(pieces) # type: list[Piece]
+
+    def add_pieces(self, pieces): # type: (list[Piece]) -> None
+        self.pieces.extend(pieces)
     
-    def is_complete(self):
-        for value in self.pieces.values():
-            if not value:
+    def add_piece(self, piece): # type: (Piece) -> None
+        self.pieces.append(piece)
+    
+    def is_complete(self): # type: () -> bool | None
+        for piece in self.pieces:
+            if not piece.found:
                 return None
         return True
 
-    def take_piece(self, idxPiece):
-        if idxPiece > self.nPieces:
-            raise ValueError("idxPiece must be less than nPieces")
-        self.pieces[idxPiece] = True
+    def get_piece(self, idxPiece): # type: (int | str) -> Piece
+        if isinstance(idxPiece, int):
+            if idxPiece > len(self.pieces):
+                raise ValueError("idxPiece must be less than len(self.pieces)")
+            return self.pieces[idxPiece]
+        else:
+            for piece in self.pieces:
+                if piece.id == idxPiece:
+                    return piece
+            else:
+                raise ValueError("idxPiece not found")
+
+    def take_piece(self, idxPiece): # type: (int | str) -> None
+        self.get_piece(idxPiece).found = True
 
     def is_piece_taken(self, idxPiece):
-        return self.pieces[idxPiece]
+        return self.get_piece(idxPiece).found
 
     def reset(self):
-        self.pieces = {i: False for i in range(self.nPieces) }
+        self.pieces = []
 
-    def action_take_piece(self, idxPiece):
+    def action_take_piece(self, idxPiece): # type: (int | str) -> None
         def action():
             self.take_piece(idxPiece)
             if self.is_complete():

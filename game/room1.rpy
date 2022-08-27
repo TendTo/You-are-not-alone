@@ -34,29 +34,46 @@ screen room1_props(room):
             image "symbol 1":
                 align (0.5, 0.5)
 
+screen room1_pieces(room, clickable = True):
 
-screen room1_pieces(room):
-    fixed:
-        if not room.is_piece_taken(0):
+    for piece in room.pieces:
+        if not piece.found:
             imagebutton:
-                focus_mask None
-                align (0.9, 0.5)
-                idle "symbol 2"
-                action room.action_take_piece(0)
-        if not room.is_piece_taken(1):
-            imagebutton:
-                focus_mask None
-                align (0.5, 0.5)
-                idle "symbol 1"
-                action room.action_take_piece(1)
+                idle piece.idle
+                xpos piece.pos[0]
+                ypos piece.pos[1] 
+                focus_mask True 
+                action If(clickable, Return(piece.id))
 
 label room1:
-    $ room1 = Room("Room 1", "This is room 1", 2)
+    $ room1 = Room(Piece("cerchio", "symbol 1", (100, 200)), Piece("triangolo", "symbol 2", (500, 400)))
     scene bg room1
-    show screen room1_props(room1)
-    show frame 1 at frame_position
-    c "Trova i segni del pazzo lepes!"
-    call screen room1_pieces(room1)
-    show frame opening at frame_position
-    c "Ma sei un pro!"
-    ""
+    while True:
+        call screen room1_pieces(room1, True)
+        show screen room1_pieces(room1, False)
+
+        $ room1.take_piece(_return)
+        if _return == "cerchio":
+            c "Sono un pazzone"
+        elif _return == "triangolo":
+            c "Sono una palla"
+        else:
+            c "Non so cosa sono"
+        
+        if room1.is_complete():
+            c "Questo è tutto"
+            jump room1_story
+
+label room1_story:
+    c "{i}Where am I?{/i}"
+    c "{i}It looks like a living room...{/i}"
+    c "{i}Ah, there is a door there!{/i}"
+    c "{i}Let's see if I can...{/i}"
+    c "{i}Wait...{/i}"
+    c "{i}This door doesn't have a handle!{/i}"
+    c "{i}That's weird, I've never seen something like this...{/i}"
+    c "{i}It's not the only strange thing in this room...{/i}"
+    c "{i}That frame...{/i}"
+    c "{i}It doesn't contain any painting!{/i}"
+    c "{i}I wonder why is it...{/i}"
+    c "{i}{/i}"

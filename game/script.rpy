@@ -4,7 +4,7 @@
 define char_name = ''
 define c = Character("[char_name]", what_color="#6fff76")
 define n = Character("", what_color="#6fa9ff")
-define d = Character("Death", who_color="#fff", what_color="#6d0000")
+define d = Character("Donn", who_color="#fff", what_color="#6d0000")
 
 label start:
     jump room1
