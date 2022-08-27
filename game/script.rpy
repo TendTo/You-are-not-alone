@@ -1,30 +1,41 @@
 ﻿init python:
     from scripts import *
 
-define char_name = ''
-define c = Character("[char_name]", what_color="#6fff76")
-define n = Character("", what_color="#6fa9ff")
-define d = Character("Donn", who_color="#fff", what_color="#6d0000")
-
 label start:
     jump room1
 
+screen introduction(clickable = False):
+    imagebutton:
+        align (0.84, 0.83) 
+        idle "door close"
+        action If(clickable, [Jump("room1"), Hide("introduction")])
+
 label introduction:
-    scene bg studio
-    n "{i}You are not alone{/i}"
-    e "{i}This sentence keeps running through my head.{/i}"
-    e "{i}It is true.{/i}"
-    e "{i}I'm not alone.{/i}"
-    e "{i}This mansion feels familiar, but I can't put my finger on it.{/i}"
-    e "{i}Something draws me here.{/i}"
-    show girl faceaway at center with fade
-    d "Welcome back!"
-    e "{i}Back? From where?{/i}"
-    e "{i}Have I already been here?{/i}"
+    scene black
 
-    menu:
-        "Move on":
-            jump room1
-        "Stay here":
-            return
+    u "Welcome back!"
+    u "I'm Mike of the Desert!"
+    p "Who... is talking? Where... am I?"
 
+    scene bg brown
+    show donn still
+    show screen introduction
+    with fade
+
+    p "Who are you?"
+    p "Where am I?"
+    p "I can't remember anything!"
+    u "..."
+    p "Ehi, I'm talking with you!"
+    p "Can you tell me where we are?"
+    u "..."
+    t "{i}Is she pretending she can't hear me?{/i}"
+    t "{i}At a closer look, she gives me chills...{/i}"
+    t "{i}Maybe there is a way to leave this place...{/i}"
+    u "The only way out is to cross the villa through the corridor behind me."
+    t "{i}What? How did she... Was I thinking out loud?{/i}"
+    p "Thank you!"
+    t "{i}Better get out of this place as quickly as possible{/i}"
+
+    # Il giocatore può cliccare sul corridoio per entrare nella STANZA N. 1
+    call screen introduction(True)

@@ -2,7 +2,7 @@ image highlight0:
     "_highlight"
     alpha 0
     linear .25 alpha .3
-    pause .4
+    pause .2
     "_highlight"
     linear .5 alpha 0.0
 
@@ -10,7 +10,7 @@ image highlight1:
     "_highlight"
     alpha 0
     linear .25 alpha .3
-    pause .4
+    pause .2
     "_highlight"
     linear .5 alpha 0.0
 
@@ -18,7 +18,7 @@ image highlight2:
     "_highlight"
     alpha 0
     linear .25 alpha .3
-    pause .4
+    pause .2
     "_highlight"
     linear .5 alpha 0.0
 
@@ -26,7 +26,7 @@ image highlight3:
     "_highlight"
     alpha 0
     linear .25 alpha .3
-    pause .4
+    pause .2
     "_highlight"
     linear .5 alpha 0.0
 

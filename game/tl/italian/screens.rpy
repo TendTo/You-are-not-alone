@@ -326,3 +326,7 @@ translate italian strings:
     old "Menu"
     new "Menu"
 
+    # game/screens.rpy:738
+    old "Language"
+    new "Lingua"
+
