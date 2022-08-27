@@ -1,4 +1,4 @@
-screen room1_puzzle(fifteen, clickable = True):
+screen room2_puzzle(fifteen, clickable = True):
     for square in fifteen.squares:
         if square is not None:
             imagebutton:
@@ -8,14 +8,15 @@ screen room1_puzzle(fifteen, clickable = True):
                 if clickable:
                     action fifteen.get_action_classic(square)
 
-label room1:
+label room2:
+    "fest" "Hai finito il gioco, brav!"
+    return
     python:
         oringin_pos = (778, 18)
-        room1_puzzle = Fifteen.from_file(filename="picture", origin_pos=oringin_pos, square_size=(80, 107), size=(4, 9))
-        room1_puzzle.shuffle(3)
+        room2_puzzle = Fifteen.from_file(filename="picture", origin_pos=oringin_pos, square_size=(80, 107), size=(4, 9))
+        room2_puzzle.shuffle(3)
     scene bg green
-    show screen door(is_open=False)
-    show screen room1_puzzle(room1_puzzle, False)
+    show screen room2_puzzle(room2_puzzle, False)
 
     p "There is a room there!\nLet's see if I can..."
     p "Wait, this door doesn't have a handle!\nI've never seen something like this before!"
@@ -24,19 +25,19 @@ label room1:
     p "The painting on the wall is illegible"
     p "Maybe if I move the pieces around..."
 
-    jump room1_puzzle
+    jump room2_puzzle
 
-label room1_puzzle:
-    call screen room1_puzzle(room1_puzzle, True)
+label room2_puzzle:
+    call screen room2_puzzle(room2_puzzle, True)
 
     show picture 1:
         anchor (0, 0)
         pos oringin_pos
     with None
 
-    jump room1_complete
+    jump room2_complete
 
-label room1_complete:
+label room2_complete:
     show donn still
     with fade
     u "Do you like it?"
@@ -61,13 +62,13 @@ label room1_complete:
     d ""
 
     hide donn still
-    show brush:
-        align (.81, .13)
-    show screen door(is_open=True)
     with fade
+    pause .2
 
+    show paintbrush:
+        align (0, 0)
+    
     t "{i}I can see something on the door now...\nIt looks like a brush...{/i}"
     t "{i}I'm starting to remember something...{/i}"
 
-    call screen door(jump_to="room2")
     jump room2

@@ -44,3 +44,22 @@ transform frame_opening:
 
 image frame opening:
     contains frame_opening
+
+transform door_position:
+    align (0.84, 0.83)
+
+image door close:
+    "_door close"
+
+image door open:
+    "_door open"
+
+image door light:
+    "_door light"
+
+image door opening:
+    "_door close"
+    pause 0.4
+    "_door open"
+    pause 0.4
+    "_door light"

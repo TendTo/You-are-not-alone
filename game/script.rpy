@@ -2,13 +2,7 @@
     from scripts import *
 
 label start:
-    jump room1
-
-screen introduction(clickable = False):
-    imagebutton:
-        align (0.84, 0.83) 
-        idle "door close"
-        action If(clickable, [Jump("room1"), Hide("introduction")])
+    jump introduction
 
 label introduction:
     scene black
@@ -19,7 +13,7 @@ label introduction:
 
     scene bg brown
     show donn still
-    show screen introduction
+    show screen door(is_open=False)
     with fade
 
     p "Who are you?"
@@ -38,4 +32,4 @@ label introduction:
     t "{i}Better get out of this place as quickly as possible{/i}"
 
     # Il giocatore può cliccare sul corridoio per entrare nella STANZA N. 1
-    call screen introduction(True)
+    call screen door(jump_to="room1")
