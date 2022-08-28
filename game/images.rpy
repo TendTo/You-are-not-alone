@@ -30,7 +30,7 @@ image highlight3:
     "_highlight"
     linear .5 alpha 0.0
 
-transform frame_opening:
+image frame opening:
     "frame 1"
     pause 0.4
     "frame 2"
@@ -41,9 +41,6 @@ transform frame_opening:
     pause 0.4
     "frame 5"
     pause 0.4
-
-image frame opening:
-    contains frame_opening
 
 transform door_position:
     align (0.84, 0.83)
@@ -63,3 +60,13 @@ image door opening:
     "_door open"
     pause 0.4
     "_door light"
+
+image intro slide:
+    "intro"
+    xalign 0.5
+    yalign 0.5
+    linear 30.0 yalign 0.1
+    pause .1
+    linear 30.0 yalign 0.5
+    pause .1
+    repeat

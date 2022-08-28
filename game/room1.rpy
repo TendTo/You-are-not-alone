@@ -1,4 +1,5 @@
 screen room1_puzzle(fifteen, clickable = True):
+    layer "master"
     for square in fifteen.squares:
         if square is not None:
             imagebutton:
@@ -10,11 +11,13 @@ screen room1_puzzle(fifteen, clickable = True):
 
 label room1:
     python:
-        oringin_pos = (778, 18)
-        room1_puzzle = Fifteen.from_file(filename="picture", origin_pos=oringin_pos, square_size=(80, 107), size=(4, 9))
-        room1_puzzle.shuffle(3)
+        oringin_pos = (745, 336)
+        room1_puzzle = Fifteen.from_file(filename="painting1", origin_pos=oringin_pos, square_size=(110, 125), size=(4, 2))
+        room1_puzzle.shuffle(1)
     scene bg green
-    show screen door(is_open=False)
+    show screen door
+    show frame 1 zorder 1:
+        align(0.5, 0.4)
     show screen room1_puzzle(room1_puzzle, False)
 
     p "There is a room there!\nLet's see if I can..."
@@ -29,15 +32,16 @@ label room1:
 label room1_puzzle:
     call screen room1_puzzle(room1_puzzle, True)
 
-    show picture 1:
+    show painting1:
         anchor (0, 0)
         pos oringin_pos
+    show frame opening
     with None
 
     jump room1_complete
 
 label room1_complete:
-    show donn still
+    show donn still onlayer character
     with fade
     u "Do you like it?"
     p "Is it an habit of yours to scare people like that?"
@@ -60,10 +64,10 @@ label room1_complete:
     p "Can you tell me something about this mansion?"
     d ""
 
-    hide donn still
+    hide donn still onlayer character
     show brush:
-        align (.81, .13)
-    show screen door(is_open=True)
+        align (.81, .45)
+    show screen door
     with fade
 
     t "{i}I can see something on the door now...\nIt looks like a brush...{/i}"

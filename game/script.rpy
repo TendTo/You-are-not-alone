@@ -2,7 +2,7 @@
     from scripts import *
 
 label start:
-    jump introduction
+    jump room1
 
 label introduction:
     scene black

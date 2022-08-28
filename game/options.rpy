@@ -9,7 +9,7 @@
 
 ## Layers
 
-define config.layers = [ 'master', 'transient', 'screens', 'highlight', 'overlay' ]
+define config.layers = [ 'master', 'painting', 'frame', 'character', 'transient', 'screens', 'highlight', 'overlay' ]
 
 ## Development
 
@@ -42,6 +42,11 @@ define config.enable_language_autodetect = True
 ## triple-quotes, and leave a blank line between paragraphs.
 
 define gui.about = _p("A game made for the 2022.2 Brackeys Game Jam. Are you really alone in this mansion?")
+
+## Main menu background image
+
+define gui.main_menu_background = "intro slide"
+define gui.main_menu_background = "intro slide"
 
 
 ## A short name for the game used for executables and directories in the built
